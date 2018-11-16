@@ -38,7 +38,8 @@ class Get_Users implements Has_Hooks {
 	public function process_request( \WP_REST_Request $rest_request ) {
 		$original_request = $rest_request->get_param( 'request' );
 		$request          = Request_Utils::get_current_request( $original_request );
-		$users            = ( Users::get_instance() )->get_users( $request );
+		$users_class      = Users::get_instance();
+		$users            = $users_class->get_users( $request );
 
 		$response = [
 			'request'     => $request,
