@@ -38,7 +38,11 @@ class UsersTable extends React.Component {
 
 	render() {
 		return (
-			<table className="wp-list-table widefat fixed striped users">
+			<table
+				className={`wp-list-table widefat fixed striped users ${
+					this.props.loading ? "loading" : ""
+				}`}
+			>
 				<UsersTableHeaders
 					onRequestChange={this.props.onRequestChange}
 					request={this.props.request}

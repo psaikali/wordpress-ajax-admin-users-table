@@ -11,6 +11,7 @@ class App extends React.Component {
 		//this.onPaginationChange = this.onPaginationChange.bind(this);
 
 		this.state = {
+			loading: false,
 			pagination: window.utec.pagination || null,
 			request: window.utec.request || null,
 			previousRequest: null,
@@ -34,31 +35,13 @@ class App extends React.Component {
 		this.setState(() => {
 			return {
 				previousRequest: oldRequest,
-				request: newRequest
+				request: newRequest,
+				loading: true
 			};
 		});
 
 		this.updateUsers(newRequest);
 	}
-
-	// onPaginationChange(changePagination, update = true) {
-	// 	let oldRequest = this.state.request;
-	// 	let newRequest = {
-	// 		...this.state.request,
-	// 		paged: changePagination.current_page
-	// 	};
-
-	// 	this.setState(() => {
-	// 		return {
-	// 			previousRequest: oldRequest,
-	// 			request: newRequest
-	// 		};
-	// 	});
-
-	// 	if (update) {
-	// 		this.updateUsers(newRequest);
-	// 	}
-	// }
 
 	updateUsers(newRequest) {
 		let ajax_url = `${window.utec.api.rest_url}utec/v1/get-users`;
@@ -78,13 +61,20 @@ class App extends React.Component {
 			.then(res => res.json())
 			.then(response => {
 				if (typeof response.users === "undefined") {
-					console.log("error !");
+					// Some kind of error, re-install previous request.
+					this.setState(() => {
+						return {
+							request: this.state.previousRequest,
+							loading: false
+						};
+					});
 				} else {
 					this.setState(() => {
 						return {
 							pagination: response.pagination,
 							request: response.request,
-							users: response.users
+							users: response.users,
+							loading: false
 						};
 					});
 				}
@@ -109,6 +99,7 @@ class App extends React.Component {
 				<UsersTable
 					users={this.state.users}
 					request={this.state.request}
+					loading={this.state.loading}
 					onRequestChange={this.onRequestChange}
 				/>
 

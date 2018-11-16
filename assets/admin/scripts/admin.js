@@ -24382,7 +24382,7 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return _react.default.createElement("table", {
-        className: "wp-list-table widefat fixed striped users"
+        className: "wp-list-table widefat fixed striped users ".concat(this.props.loading ? "loading" : "")
       }, _react.default.createElement(_UsersTableHeaders.default, {
         onRequestChange: this.props.onRequestChange,
         request: this.props.request
@@ -24451,6 +24451,7 @@ function (_React$Component) {
     _this.onRequestChange = _this.onRequestChange.bind(_assertThisInitialized(_assertThisInitialized(_this))); //this.onPaginationChange = this.onPaginationChange.bind(this);
 
     _this.state = {
+      loading: false,
       pagination: window.utec.pagination || null,
       request: window.utec.request || null,
       previousRequest: null,
@@ -24475,27 +24476,12 @@ function (_React$Component) {
       this.setState(function () {
         return {
           previousRequest: oldRequest,
-          request: newRequest
+          request: newRequest,
+          loading: true
         };
       });
       this.updateUsers(newRequest);
-    } // onPaginationChange(changePagination, update = true) {
-    // 	let oldRequest = this.state.request;
-    // 	let newRequest = {
-    // 		...this.state.request,
-    // 		paged: changePagination.current_page
-    // 	};
-    // 	this.setState(() => {
-    // 		return {
-    // 			previousRequest: oldRequest,
-    // 			request: newRequest
-    // 		};
-    // 	});
-    // 	if (update) {
-    // 		this.updateUsers(newRequest);
-    // 	}
-    // }
-
+    }
   }, {
     key: "updateUsers",
     value: function updateUsers(newRequest) {
@@ -24517,13 +24503,20 @@ function (_React$Component) {
         return res.json();
       }).then(function (response) {
         if (typeof response.users === "undefined") {
-          console.log("error !");
+          // Some kind of error, re-install previous request.
+          _this2.setState(function () {
+            return {
+              request: _this2.state.previousRequest,
+              loading: false
+            };
+          });
         } else {
           _this2.setState(function () {
             return {
               pagination: response.pagination,
               request: response.request,
-              users: response.users
+              users: response.users,
+              loading: false
             };
           });
         }
@@ -24546,6 +24539,7 @@ function (_React$Component) {
       })), _react.default.createElement(_UsersTable.default, {
         users: this.state.users,
         request: this.state.request,
+        loading: this.state.loading,
         onRequestChange: this.onRequestChange
       }), _react.default.createElement("div", {
         className: "after-table"

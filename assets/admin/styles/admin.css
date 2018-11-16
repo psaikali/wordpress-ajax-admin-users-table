@@ -72,3 +72,5 @@
     cursor: pointer; }
 .users_page_utec-list-table table tbody tr td.username img {
   width: 48px; }
+.users_page_utec-list-table table.loading {
+  opacity: .4; }
