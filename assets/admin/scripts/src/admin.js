@@ -4,6 +4,8 @@ import RolesFilter from "./components/RolesFilter.js";
 import Pagination from "./components/Pagination.js";
 import UsersTable from "./components/UsersTable.js";
 import { setLocaleData } from "@wordpress/i18n";
+import "isomorphic-fetch";
+import "promise-polyfill/src/polyfill";
 
 class App extends React.Component {
 	constructor(props) {

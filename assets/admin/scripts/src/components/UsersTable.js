@@ -38,7 +38,11 @@ class UsersTable extends React.Component {
 					<a href={`mailto:${email}`}>{email}</a>
 				</td>
 				<td className="role column-role" data-colname="Role">
-					{Object.values(roles).join(", ")}
+					{Object.keys(roles)
+						.map(role => {
+							return roles[role];
+						})
+						.join(", ")}
 				</td>
 			</tr>
 		);
