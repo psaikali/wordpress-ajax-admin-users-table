@@ -1,0 +1,171 @@
+# Copyright (C) 2018 utec
+# This file is distributed under the same license as the utec package.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: utec\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: Pierre Saïkali\n"
+"X-Generator: Poedit 2.2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: src\n"
+"X-Poedit-SearchPath-2: views\n"
+
+#: assets/admin/scripts/src/components/Pagination.js:49 src/plugin.php:61
+#: views/partials/pagination.php:12
+msgid "Previous"
+msgstr ""
+
+#: assets/admin/scripts/src/components/Pagination.js:55 src/plugin.php:62
+#: views/partials/pagination.php:19
+#, php-format, javascript-format
+msgid "Page %1$d of %2$d"
+msgstr ""
+
+#: assets/admin/scripts/src/components/Pagination.js:71 src/plugin.php:63
+#: views/partials/pagination.php:30
+msgid "Next"
+msgstr ""
+
+#: assets/admin/scripts/src/components/UsersTable.js:27 src/plugin.php:68
+#, php-format, javascript-format
+msgid "Profile picture for user %1$s"
+msgstr ""
+
+#: assets/admin/scripts/src/components/UsersTable.js:35
+#: views/admin-list-table.php:33
+msgid "Unknown"
+msgstr ""
+
+#: assets/admin/scripts/src/components/UsersTable.js:63
+#: views/admin-list-table.php:45
+msgid "No users found."
+msgstr ""
+
+#: assets/admin/scripts/src/components/UsersTableHeaders.js:45
+#: src/plugin.php:64 views/partials/table-headers.php:17
+msgid "Username"
+msgstr ""
+
+#: assets/admin/scripts/src/components/UsersTableHeaders.js:56
+#: src/plugin.php:65 views/partials/table-headers.php:22
+msgid "Name"
+msgstr ""
+
+#: assets/admin/scripts/src/components/UsersTableHeaders.js:65
+#: src/plugin.php:66 views/partials/table-headers.php:26
+msgid "E-mail address"
+msgstr ""
+
+#: assets/admin/scripts/src/components/UsersTableHeaders.js:72
+#: src/plugin.php:67 views/partials/table-headers.php:29
+msgid "Role(s)"
+msgstr ""
+
+#: node_modules/@wordpress/i18n/benchmark/index.js:8
+msgid "Translate"
+msgstr ""
+
+#: node_modules/@wordpress/i18n/src/test/index.js:39
+#: node_modules/@wordpress/i18n/src/test/index.js:104
+msgid "hello"
+msgstr ""
+
+#: node_modules/@wordpress/i18n/src/test/index.js:45
+msgctxt "verb"
+msgid "feed"
+msgstr ""
+
+#: node_modules/@wordpress/i18n/src/test/index.js:51
+#: node_modules/@wordpress/i18n/src/test/index.js:55
+#: node_modules/@wordpress/i18n/src/test/index.js:99
+#: node_modules/@wordpress/i18n/src/test/index.js:114
+#, javascript-format
+msgid "%d banana"
+msgid_plural "%d bananas"
+msgstr[0] ""
+msgstr[1] ""
+
+#: node_modules/@wordpress/i18n/src/test/index.js:61
+#: node_modules/@wordpress/i18n/src/test/index.js:65
+#, javascript-format
+msgctxt "fruit"
+msgid "%d apple"
+msgid_plural "%d apples"
+msgstr[0] ""
+msgstr[1] ""
+
+#: node_modules/@wordpress/i18n/src/test/index.js:78
+#, javascript-format
+msgid "hello %s"
+msgstr ""
+
+#: node_modules/@wordpress/i18n/src/test/index.js:108
+msgid "cheeseburger"
+msgstr ""
+
+#: node_modules/@wordpress/i18n/src/test/index.js:118
+#: node_modules/@wordpress/i18n/src/test/index.js:122
+#, javascript-format
+msgid "%d cat"
+msgid_plural "%d cats"
+msgstr[0] ""
+msgstr[1] ""
+
+#: node_modules/@wordpress/i18n/tools/pot-to-php.js:75
+#: node_modules/@wordpress/i18n/tools/pot-to-php.js:83
+msgid "${ original }"
+msgid_plural "${ plural }"
+msgstr[0] ""
+msgstr[1] ""
+
+#: node_modules/@wordpress/i18n/tools/pot-to-php.js:77
+#: node_modules/@wordpress/i18n/tools/pot-to-php.js:85
+msgctxt "${ translation.msgctxt }"
+msgid "${ original }"
+msgid_plural "${ plural }"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/admin/table-page.php:30 src/admin/table-page.php:42
+msgid "Custom Codeable.io users table"
+msgstr ""
+
+#: src/admin/table-page.php:30
+msgid "Custom table"
+msgstr ""
+
+#: src/data/roles.php:38
+msgid "All"
+msgstr ""
+
+#: src/data/roles.php:61
+msgid "None"
+msgstr ""
+
+#: src/data/users.php:115
+msgctxt "no user roles"
+msgid "None"
+msgstr ""
+
+#: src/plugin.php:48
+msgid "See in action"
+msgstr ""
+
+#: views/admin-list-table.php:28
+#, php-format
+msgid "Avatar profile picture of %1$s"
+msgstr ""
+
+#: views/partials/roles-filter.php:3
+msgid "Active filter on users list table"
+msgstr ""

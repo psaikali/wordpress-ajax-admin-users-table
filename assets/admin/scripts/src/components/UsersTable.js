@@ -1,5 +1,6 @@
 import React from "react";
 import UsersTableHeaders from "./UsersTableHeaders.js";
+import { __, sprintf } from "@wordpress/i18n";
 
 class UsersTable extends React.Component {
 	renderUserRow(user) {
@@ -20,11 +21,18 @@ class UsersTable extends React.Component {
 					data-colname="Username"
 				>
 					<a href={edit_link}>
-						<img src={avatar} /> <strong>{user_login}</strong>
+						<img
+							src={avatar}
+							alt={sprintf(
+								__("Profile picture for user %1$s", "utec"),
+								user_login
+							)}
+						/>{" "}
+						<strong>{user_login}</strong>
 					</a>
 				</td>
 				<td className="name column-name" data-colname="Name">
-					{name ? name : <em>Unknown</em>}
+					{name ? name : <em>{__("Unknown", "utec")}</em>}
 				</td>
 				<td className="email column-email" data-colname="Email">
 					<a href={`mailto:${email}`}>{email}</a>
@@ -52,7 +60,7 @@ class UsersTable extends React.Component {
 						this.props.users.map(this.renderUserRow)
 					) : (
 						<tr>
-							<td colSpan="4">No users found</td>
+							<td colSpan="4">{__("No users found.", "utec")}</td>
 						</tr>
 					)}
 				</tbody>

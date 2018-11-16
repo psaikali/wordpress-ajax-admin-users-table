@@ -8,6 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use UTEC\Common\Interfaces\Has_Hooks;
 use UTEC\Admin\Table_Page;
+use UTEC\Utils;
 
 /**
  * The central place to list our classes triggering hooks.
@@ -32,8 +33,6 @@ class Enqueue_Assets implements Has_Hooks {
 
 		wp_enqueue_style( 'utec-admin-style', UTEC_ASSETS_URL . '/admin/styles/admin.css', [], UTEC_VERSION );
 
-		// wp_enqueue_script( 'utec-react', UTEC_ASSETS_URL . '/admin/scripts/lib/react.min.js', [], UTEC_VERSION, true );
-		// wp_enqueue_script( 'utec-react-dom', UTEC_ASSETS_URL . '/admin/scripts/lib/react-dom.min.js', [], UTEC_VERSION, true );
 		wp_enqueue_script( 'utec-admin-script', UTEC_ASSETS_URL . '/admin/scripts/admin.js', [], UTEC_VERSION, true );
 
 		wp_localize_script(
@@ -53,6 +52,7 @@ class Enqueue_Assets implements Has_Hooks {
 					'total_pages'  => $users['total_pages'],
 					'total_users'  => $users['total_users'],
 				],
+				'translation' => Utils::get_jed_locale_data( 'utec' ),
 			]
 		);
 	}

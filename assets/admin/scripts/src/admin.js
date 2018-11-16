@@ -3,6 +3,7 @@ import { render } from "react-dom";
 import RolesFilter from "./components/RolesFilter.js";
 import Pagination from "./components/Pagination.js";
 import UsersTable from "./components/UsersTable.js";
+import { setLocaleData } from "@wordpress/i18n";
 
 class App extends React.Component {
 	constructor(props) {
@@ -17,20 +18,9 @@ class App extends React.Component {
 			roles: window.utec.roles || null,
 			users: window.utec.users || null
 		};
+
+		setLocaleData(utec.translation, "utec");
 	}
-
-	// componentDidMount() {
-	// 	window.onpopstate = this.handleHistoryChange;
-	// }
-
-	// handleHistoryChange = (event) => {
-	// 	console.log(event.state);
-	// 	console.log(this);
-
-	// 	// this.setState(() => {
-	// 	// 	return event.state;
-	// 	// });
-	// }
 
 	onRequestChange(changeRequest) {
 		let oldRequest = this.state.request;

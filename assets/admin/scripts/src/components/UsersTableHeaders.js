@@ -1,4 +1,5 @@
 import React from "react";
+import { __ } from "@wordpress/i18n";
 
 class UsersTableHeaders extends React.Component {
 	onClickHeader(newOrder) {
@@ -41,7 +42,7 @@ class UsersTableHeaders extends React.Component {
 						onClick={() => this.onClickHeader("user_login")}
 					>
 						<p>
-							<span>Username</span>
+							<span>{__("Username", "utec")}</span>
 							<span className="sorting-indicator" />
 						</p>
 					</th>
@@ -52,7 +53,7 @@ class UsersTableHeaders extends React.Component {
 						onClick={() => this.onClickHeader("name")}
 					>
 						<p>
-							<span>Name</span>
+							<span>{__("Name", "utec")}</span>
 							<span className="sorting-indicator" />
 						</p>
 					</th>
@@ -61,14 +62,14 @@ class UsersTableHeaders extends React.Component {
 						id="email"
 						className="manage-column column-email"
 					>
-						<span>E-mail address</span>
+						<span>{__("E-mail address", "utec")}</span>
 					</th>
 					<th
 						scope="col"
 						id="email"
 						className="manage-column column-role"
 					>
-						Role(s)
+						{__("Role(s)", "utec")}
 					</th>
 				</tr>
 			</thead>

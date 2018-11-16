@@ -1,4 +1,5 @@
 import React from "react";
+import { sprintf, __ } from "@wordpress/i18n";
 
 class Pagination extends React.Component {
 	constructor(props) {
@@ -45,13 +46,16 @@ class Pagination extends React.Component {
 					>
 						<span>
 							<i className="dashicons dashicons-arrow-left-alt" />{" "}
-							Previous
+							{__("Previous", "utec")}
 						</span>
 					</li>
 					<li className="text">
 						<span>
-							Page {this.props.pagination.current_page} of{" "}
-							{this.props.pagination.total_pages}
+							{sprintf(
+								__("Page %1$d of %2$d", "utec"),
+								this.props.pagination.current_page,
+								this.props.pagination.total_pages
+							)}
 						</span>
 					</li>
 					<li
@@ -64,7 +68,7 @@ class Pagination extends React.Component {
 						onClick={this.onClickNext}
 					>
 						<span>
-							Next{" "}
+							{__("Next", "utec")}{" "}
 							<i className="dashicons dashicons-arrow-right-alt" />
 						</span>
 					</li>
