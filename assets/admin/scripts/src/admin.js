@@ -8,7 +8,6 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.onRequestChange = this.onRequestChange.bind(this);
-		//this.onPaginationChange = this.onPaginationChange.bind(this);
 
 		this.state = {
 			loading: false,
@@ -19,6 +18,19 @@ class App extends React.Component {
 			users: window.utec.users || null
 		};
 	}
+
+	// componentDidMount() {
+	// 	window.onpopstate = this.handleHistoryChange;
+	// }
+
+	// handleHistoryChange = (event) => {
+	// 	console.log(event.state);
+	// 	console.log(this);
+
+	// 	// this.setState(() => {
+	// 	// 	return event.state;
+	// 	// });
+	// }
 
 	onRequestChange(changeRequest) {
 		let oldRequest = this.state.request;
@@ -44,10 +56,8 @@ class App extends React.Component {
 	}
 
 	updateUsers(newRequest) {
-		let ajax_url = `${window.utec.api.rest_url}utec/v1/get-users`;
-		let data = {
-			request: newRequest
-		};
+		const ajax_url = `${window.utec.api.rest_url}utec/v1/get-users`;
+		const data = { request: newRequest };
 
 		fetch(ajax_url, {
 			method: "POST",
@@ -69,6 +79,7 @@ class App extends React.Component {
 						};
 					});
 				} else {
+					// Everything went well, let's update data and URL.
 					this.setState(() => {
 						return {
 							pagination: response.pagination,
@@ -77,8 +88,30 @@ class App extends React.Component {
 							loading: false
 						};
 					});
+
+					this.updateUrl();
 				}
 			});
+	}
+
+	updateUrl() {
+		if (!!(window.history && history.pushState)) {
+			let url = window.utec.admin_url;
+
+			Object.keys(this.state.request).map(key => {
+				if (!(key === "role" && this.state.request[key] === null)) {
+					url += `&${key}=${this.state.request[key]}`;
+				}
+			});
+
+			window.history.pushState(
+				{
+					data: this.state
+				},
+				document.title,
+				url
+			);
+		}
 	}
 
 	render() {

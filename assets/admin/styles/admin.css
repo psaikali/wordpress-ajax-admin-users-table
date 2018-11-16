@@ -40,18 +40,24 @@
       background: #fff;
       border: 1px solid #DADADA;
       border-radius: .25em;
-      padding: .25em .5em; }
+      padding: .25em .5em;
+      color: #0073aa; }
+      .users_page_utec-list-table nav.pagination ul li a:hover, .users_page_utec-list-table nav.pagination ul li span:hover {
+        color: #00a0d2; }
     .users_page_utec-list-table nav.pagination ul li:not(.disabled):not(.text) a:hover, .users_page_utec-list-table nav.pagination ul li:not(.disabled):not(.text) span:hover {
+      transition: .2s all ease-in-out;
       cursor: pointer;
-      border-color: #BBB; }
+      border-color: #00a0d2; }
     .users_page_utec-list-table nav.pagination ul li.text span {
       background: transparent;
-      border-color: transparent; }
+      border-color: transparent;
+      color: #111; }
     .users_page_utec-list-table nav.pagination ul li.disabled {
       opacity: .5; }
-      .users_page_utec-list-table nav.pagination ul li.disabled span {
+      .users_page_utec-list-table nav.pagination ul li.disabled span, .users_page_utec-list-table nav.pagination ul li.disabled a {
         background: transparent;
-        border-color: transparent; }
+        border-color: transparent;
+        color: #111; }
 .users_page_utec-list-table div.before-table {
   margin-top: .5rem; }
   .users_page_utec-list-table div.before-table nav.pagination {
@@ -62,9 +68,9 @@
   display: block;
   overflow: hidden;
   padding: 8px;
-  color: #0073aa;
   line-height: 1.4em;
-  margin: 0; }
+  margin: 0;
+  color: #0073aa; }
   .users_page_utec-list-table table thead tr th p:hover {
     color: #00a0d2; }
   .users_page_utec-list-table table thead tr th p span {

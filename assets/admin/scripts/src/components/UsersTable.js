@@ -52,7 +52,7 @@ class UsersTable extends React.Component {
 						this.props.users.map(this.renderUserRow)
 					) : (
 						<tr>
-							<td colSpan="6">No users found</td>
+							<td colSpan="4">No users found</td>
 						</tr>
 					)}
 				</tbody>

@@ -24390,7 +24390,7 @@ function (_React$Component) {
         id: "the-list",
         "data-wp-lists": "list:user"
       }, this.props.users.length > 0 ? this.props.users.map(this.renderUserRow) : _react.default.createElement("tr", null, _react.default.createElement("td", {
-        colSpan: "6"
+        colSpan: "4"
       }, "No users found"))));
     }
   }]);
@@ -24448,8 +24448,7 @@ function (_React$Component) {
     _classCallCheck(this, App);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
-    _this.onRequestChange = _this.onRequestChange.bind(_assertThisInitialized(_assertThisInitialized(_this))); //this.onPaginationChange = this.onPaginationChange.bind(this);
-
+    _this.onRequestChange = _this.onRequestChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.state = {
       loading: false,
       pagination: window.utec.pagination || null,
@@ -24459,7 +24458,17 @@ function (_React$Component) {
       users: window.utec.users || null
     };
     return _this;
-  }
+  } // componentDidMount() {
+  // 	window.onpopstate = this.handleHistoryChange;
+  // }
+  // handleHistoryChange = (event) => {
+  // 	console.log(event.state);
+  // 	console.log(this);
+  // 	// this.setState(() => {
+  // 	// 	return event.state;
+  // 	// });
+  // }
+
 
   _createClass(App, [{
     key: "onRequestChange",
@@ -24511,6 +24520,7 @@ function (_React$Component) {
             };
           });
         } else {
+          // Everything went well, let's update data and URL.
           _this2.setState(function () {
             return {
               pagination: response.pagination,
@@ -24519,8 +24529,27 @@ function (_React$Component) {
               loading: false
             };
           });
+
+          _this2.updateUrl();
         }
       });
+    }
+  }, {
+    key: "updateUrl",
+    value: function updateUrl() {
+      var _this3 = this;
+
+      if (!!(window.history && history.pushState)) {
+        var url = window.utec.admin_url;
+        Object.keys(this.state.request).map(function (key) {
+          if (!(key === "role" && _this3.state.request[key] === null)) {
+            url += "&".concat(key, "=").concat(_this3.state.request[key]);
+          }
+        });
+        window.history.pushState({
+          data: this.state
+        }, document.title, url);
+      }
     }
   }, {
     key: "render",
@@ -24581,7 +24610,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62104" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56837" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

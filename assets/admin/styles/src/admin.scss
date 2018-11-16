@@ -70,13 +70,19 @@ $border: #DADADA;
 					border: 1px solid $border;
 					border-radius: .25em;
 					padding:.25em .5em;
+					color: #0073aa;
+
+					&:hover {
+						color:#00a0d2;
+					}
 				}
 
 				&:not(.disabled):not(.text) {
 					a, span {
 						&:hover {
+							transition: .2s all ease-in-out;
 							cursor: pointer;
-							border-color: #BBB;
+							border-color: #00a0d2;
 						}
 					}
 				}
@@ -85,15 +91,17 @@ $border: #DADADA;
 					span {
 						background:transparent;
 						border-color: transparent;
+						color:#111;
 					}
 				}
 
 				&.disabled {
 					opacity: .5;
 
-					span {
+					span, a {
 						background: transparent;
 						border-color:transparent;
+						color:#111;
 					}
 				}
 			}
@@ -122,9 +130,9 @@ $border: #DADADA;
 						display: block;
 						overflow: hidden;
 						padding: 8px;
-						color: #0073aa;
 						line-height: 1.4em;
 						margin:0;
+						color: #0073aa;
 
 						&:hover {
 							color:#00a0d2;
