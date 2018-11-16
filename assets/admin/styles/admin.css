@@ -1,0 +1,74 @@
+@media screen and (min-width: 783px) {
+  .users_page_utec-list-table nav.roles-filter {
+    width: 69%;
+    float: left; } }
+.users_page_utec-list-table nav.roles-filter > ul {
+  float: none;
+  margin: 0; }
+  .users_page_utec-list-table nav.roles-filter > ul li a {
+    padding: .5em .25em;
+    margin: 0 .425em;
+    position: relative; }
+    .users_page_utec-list-table nav.roles-filter > ul li a:after {
+      position: absolute;
+      content: "";
+      display: block;
+      right: -.425em;
+      margin-right: -1px;
+      top: 0.5em;
+      bottom: 0.5em;
+      width: 1px;
+      background: #c1c1c1; }
+  .users_page_utec-list-table nav.roles-filter > ul li:first-of-type a {
+    margin-left: 0; }
+  .users_page_utec-list-table nav.roles-filter > ul li:last-of-type a:after {
+    display: none; }
+@media screen and (min-width: 783px) {
+  .users_page_utec-list-table nav.pagination {
+    width: 29%;
+    float: right;
+    text-align: right; } }
+.users_page_utec-list-table nav.pagination ul {
+  margin: 0;
+  list-style: none; }
+  .users_page_utec-list-table nav.pagination ul li {
+    display: inline-block;
+    margin-left: .5em; }
+    .users_page_utec-list-table nav.pagination ul li a, .users_page_utec-list-table nav.pagination ul li span {
+      display: block;
+      text-decoration: none;
+      background: #fff;
+      border: 1px solid #DADADA;
+      border-radius: .25em;
+      padding: .25em .5em; }
+    .users_page_utec-list-table nav.pagination ul li:not(.disabled):not(.text) a:hover, .users_page_utec-list-table nav.pagination ul li:not(.disabled):not(.text) span:hover {
+      cursor: pointer;
+      border-color: #BBB; }
+    .users_page_utec-list-table nav.pagination ul li.text span {
+      background: transparent;
+      border-color: transparent; }
+    .users_page_utec-list-table nav.pagination ul li.disabled {
+      opacity: .5; }
+      .users_page_utec-list-table nav.pagination ul li.disabled span {
+        background: transparent;
+        border-color: transparent; }
+.users_page_utec-list-table div.before-table {
+  margin-top: .5rem; }
+  .users_page_utec-list-table div.before-table nav.pagination {
+    margin-bottom: .175rem; }
+.users_page_utec-list-table div.after-table nav.pagination {
+  margin-top: .5rem; }
+.users_page_utec-list-table table thead tr th p {
+  display: block;
+  overflow: hidden;
+  padding: 8px;
+  color: #0073aa;
+  line-height: 1.4em;
+  margin: 0; }
+  .users_page_utec-list-table table thead tr th p:hover {
+    color: #00a0d2; }
+  .users_page_utec-list-table table thead tr th p span {
+    float: left;
+    cursor: pointer; }
+.users_page_utec-list-table table tbody tr td.username img {
+  width: 48px; }

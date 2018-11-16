@@ -1,0 +1,13 @@
+*.log
+.cache
+.htaccess
+node_modules
+*.log
+.DS_Store
+.Spotlight-V100
+.Trashes
+Thumbs.db
+.idea
+.vscode
+phpunit.xml
+vendor

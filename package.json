@@ -1,0 +1,17 @@
+{
+  "name": "user-table-exercise-codeable",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel watch assets/admin/scripts/src/admin.js -d assets/admin/scripts",
+    "build": "parcel build assets/admin/scripts/src/admin.js -d assets/admin/scripts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
+  }
+}

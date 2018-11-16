@@ -1,0 +1,152 @@
+$border: #DADADA;
+
+.users_page_utec-list-table {
+	nav.roles-filter {
+		@media screen and (min-width: 783px) {
+			width:69%;
+			float:left;
+		}
+
+		> ul {
+			float:none;
+			margin:0;
+
+			li {
+				a {
+					padding: .5em .25em;
+					margin: 0 .425em;
+					position: relative;
+
+					&:after {
+						$offset: .5em;
+						position: absolute;
+						content:"";
+						display: block;
+						right: -.425em;
+						margin-right: -1px;
+						top:$offset;
+						bottom: $offset;
+						width:1px;
+						background: darken( $border, 10% );
+					}
+				}
+
+				&:first-of-type {
+					a {
+						margin-left: 0;
+					}
+				}
+
+				&:last-of-type {
+					a {
+						&:after {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	nav.pagination {
+		@media screen and (min-width: 783px) {
+			width:29%;
+			float:right;
+			text-align: right;
+		}
+
+		ul {
+			margin: 0;
+			list-style: none;
+
+			li {
+				display: inline-block;
+				margin-left: .5em;
+				
+				a, span {
+					display: block;
+					text-decoration: none;
+					background: #fff;
+					border: 1px solid $border;
+					border-radius: .25em;
+					padding:.25em .5em;
+				}
+
+				&:not(.disabled):not(.text) {
+					a, span {
+						&:hover {
+							cursor: pointer;
+							border-color: #BBB;
+						}
+					}
+				}
+
+				&.text {
+					span {
+						background:transparent;
+						border-color: transparent;
+					}
+				}
+
+				&.disabled {
+					opacity: .5;
+
+					span {
+						background: transparent;
+						border-color:transparent;
+					}
+				}
+			}
+		}
+	}
+
+	div.before-table {
+		margin-top: .5rem;
+
+		nav.pagination {
+			margin-bottom: .175rem;
+		}	
+	}
+
+	div.after-table {
+		nav.pagination {
+			margin-top: .5rem;
+		}	
+	}
+
+	table {
+		thead {
+			tr {
+				th {
+					p {
+						display: block;
+						overflow: hidden;
+						padding: 8px;
+						color: #0073aa;
+						line-height: 1.4em;
+						margin:0;
+
+						&:hover {
+							color:#00a0d2;
+						}
+
+						span {
+							float: left;
+							cursor: pointer;
+						}
+					}
+				}
+			}
+		}
+
+		tbody {
+			tr {
+				td.username {
+					img {
+						width: 48px;
+					}
+				}
+			}
+		}
+	}
+}
