@@ -52,6 +52,7 @@ class Request_Utils {
 	}
 
 	public static function get_current_request_users() {
-		return ( Users::get_instance() )->get_users( self::get_current_request() );
+		$users_class = Users::get_instance();
+		return $users_class->get_users( self::get_current_request() );
 	}
 }
