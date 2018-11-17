@@ -24,6 +24,11 @@ class App extends React.Component {
 		setLocaleData(utec.translation, "utec");
 	}
 
+	/**
+	 * Request change happens when role, order, orderby or page are clicked
+	 * and we need to update data.
+	 * @param {object} changeRequest
+	 */
 	onRequestChange(changeRequest) {
 		let oldRequest = this.state.request;
 		let newRequest = {
@@ -47,6 +52,10 @@ class App extends React.Component {
 		this.updateUsers(newRequest);
 	}
 
+	/**
+	 * AJAX call to get new data from our WP
+	 * @param {object} newRequest
+	 */
 	updateUsers(newRequest) {
 		const ajax_url = `${window.utec.api.rest_url}utec/v1/get-users`;
 		const data = { request: newRequest };
@@ -86,6 +95,10 @@ class App extends React.Component {
 			});
 	}
 
+	/**
+	 * Keep the URL updated with proper $_GET parameters,
+	 * so reloading the page will gives us the correct data on page load.
+	 */
 	updateUrl() {
 		if (!!(window.history && history.pushState)) {
 			let url = window.utec.admin_url;
@@ -106,6 +119,9 @@ class App extends React.Component {
 		}
 	}
 
+	/**
+	 * Render our app layout
+	 */
 	render() {
 		return (
 			<div className="app">

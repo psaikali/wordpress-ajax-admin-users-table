@@ -1,11 +1,6 @@
 import React from "react";
 
 class RolesFilter extends React.Component {
-	constructor(props) {
-		super(props);
-		//this.onClickRole = this.onClickRole.bind(this);
-	}
-
 	onClickRole(event, role) {
 		event.preventDefault();
 
