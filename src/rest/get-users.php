@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Register the admin page and output its content.
+ * Our Rest API route logic to get and send users data to the React JS app.
  */
 class Get_Users implements Has_Hooks {
 	/**
@@ -22,6 +22,9 @@ class Get_Users implements Has_Hooks {
 		add_action( 'rest_api_init', [ $this, 'register_route' ] );
 	}
 
+	/**
+	 * Register our /get-users route
+	 */
 	public function register_route() {
 		$namespace = 'utec/v1';
 
@@ -35,6 +38,12 @@ class Get_Users implements Has_Hooks {
 		);
 	}
 
+	/**
+	 * Process our /get-users route request.
+	 *
+	 * @param \WP_REST_Request $rest_request
+	 * @return \WP_REST_Response Response data sent to React JS app.
+	 */
 	public function process_request( \WP_REST_Request $rest_request ) {
 		$original_request = $rest_request->get_param( 'request' );
 		$request          = Request_Utils::get_current_request( $original_request );

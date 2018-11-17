@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Register the admin page and output its content.
+ * Everything related to users.
  */
 class Users {
 	use Is_Singleton;
@@ -65,6 +65,12 @@ class Users {
 		return self::$users;
 	}
 
+	/**
+	 * Rework WP_User object to return only what we need.
+	 *
+	 * @param array $users An array of WP_User objects
+	 * @return array $prepared_users An array of prepared objects
+	 */
 	protected static function prepare_users_data( $users ) {
 		if ( ! is_array( $users ) ) {
 			return [];
@@ -94,27 +100,10 @@ class Users {
 				'name'       => $user_name,
 				'avatar'     => get_avatar_url( $user->ID, [ 'size' => 96 ] ),
 				'edit_link'  => get_edit_user_link( $user->ID ),
-				'roles'      => self::get_readable_user_roles( $user->roles ),
+				'roles'      => Roles::get_readable_user_roles( $user->roles ),
 			];
 		}
 
 		return $prepared_users;
-	}
-
-	protected static function get_readable_user_roles( $roles ) {
-		$wp_roles  = wp_roles();
-		$role_list = [];
-
-		foreach ( $roles as $role ) {
-			if ( isset( $wp_roles->role_names[ $role ] ) ) {
-				$role_list[ $role ] = translate_user_role( $wp_roles->role_names[ $role ] );
-			}
-		}
-
-		if ( empty( $role_list ) ) {
-			$role_list['none'] = _x( 'None', 'no user roles' );
-		}
-
-		return $role_list;
 	}
 }

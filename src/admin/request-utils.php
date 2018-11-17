@@ -9,13 +9,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 use UTEC\Data\Users;
 
 /**
- * Register the admin page and output its content.
+ * Some utilities functions to get data from our request.
  */
 class Request_Utils {
+	/**
+	 * Get the current (active) role filter
+	 *
+	 * @return string Current role slug.
+	 */
 	public static function get_current_role_filter() {
 		return self::get_current_request()['role'];
 	}
 
+	/**
+	 * Get the current request from $_GET parameters (no-JS users) or $_POST (JS React users)
+	 *
+	 * @param array $reference The array to use to look for data.
+	 * @return array A cleaned array.
+	 */
 	public static function get_current_request( $reference = null ) {
 		if ( is_null( $reference ) ) {
 			$reference = $_REQUEST;
@@ -51,6 +62,11 @@ class Request_Utils {
 		return $request;
 	}
 
+	/**
+	 * Get the users list for the current request
+	 *
+	 * @return array Array of prepared users objects
+	 */
 	public static function get_current_request_users() {
 		$users_class = Users::get_instance();
 		return $users_class->get_users( self::get_current_request() );

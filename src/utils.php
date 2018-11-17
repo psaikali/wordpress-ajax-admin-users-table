@@ -91,6 +91,13 @@ class Utils {
 		include $located_template_file;
 	}
 
+	/**
+	 * Get Jed locale data for translation.
+	 *
+	 * @author Gutenberg
+	 * @param string $domain
+	 * @return void
+	 */
 	public static function get_jed_locale_data( $domain ) {
 		$translations = get_translations_for_domain( $domain );
 

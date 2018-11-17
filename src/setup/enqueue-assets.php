@@ -11,7 +11,7 @@ use UTEC\Admin\Table_Page;
 use UTEC\Utils;
 
 /**
- * The central place to list our classes triggering hooks.
+ * Enqueue plugin assets
  */
 class Enqueue_Assets implements Has_Hooks {
 	/**
@@ -21,6 +21,11 @@ class Enqueue_Assets implements Has_Hooks {
 		add_action( 'admin_enqueue_scripts', [ $this, 'register_scripts_and_styles' ] );
 	}
 
+	/**
+	 * Register plugin scripts and styles
+	 *
+	 * @return void
+	 */
 	public function register_scripts_and_styles() {
 		$plugin_admin_page_id = 'users_page_' . Table_Page::SLUG;
 
@@ -28,12 +33,15 @@ class Enqueue_Assets implements Has_Hooks {
 			return;
 		}
 
-		$request = \UTEC\Admin\Request_Utils::get_current_request();
-		$users   = \UTEC\Admin\Request_Utils::get_current_request_users();
-
+		// CSS styling.
 		wp_enqueue_style( 'utec-admin-style', UTEC_ASSETS_URL . '/admin/styles/admin.css', [], UTEC_VERSION );
 
+		// Javascript React app.
 		wp_enqueue_script( 'utec-admin-script', UTEC_ASSETS_URL . '/admin/scripts/admin.js', [], UTEC_VERSION, true );
+
+		// Send vital data to React JS app.
+		$request = \UTEC\Admin\Request_Utils::get_current_request();
+		$users   = \UTEC\Admin\Request_Utils::get_current_request_users();
 
 		wp_localize_script(
 			'utec-admin-script',

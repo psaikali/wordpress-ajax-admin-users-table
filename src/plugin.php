@@ -11,7 +11,7 @@ use UTEC\Common\Traits\Is_Singleton;
 use UTEC\Admin\Table_Page;
 
 /**
- * Our plugin loader, in charge of high-level stuff.
+ * Our plugin main class.
  */
 class Plugin {
 	use Is_Singleton;

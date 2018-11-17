@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Our Timeliner plugin autoloader.
+ * Our UTEC plugin autoloader.
  * No "class-" will be used in our filenames, because reasons.
  *
  * @link https://carlalexander.ca/organizing-files-object-oriented-wordpress-plugin/
@@ -17,7 +17,7 @@ class Autoloader {
 	private static $folder    = 'src';
 
 	/**
-	 * Registers Timeliner\Autoloader as an SPL autoloader.
+	 * Registers UTEC\Autoloader as an SPL autoloader.
 	 *
 	 * @param string $folder The folder where our source code is located.
 	 * @param string $namespace The base namespace to be used.

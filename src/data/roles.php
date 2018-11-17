@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Register the admin page and output its content.
+ * Everything related to roles data.
  */
 class Roles {
 	use Is_Singleton;
@@ -23,17 +23,22 @@ class Roles {
 	 */
 	protected static $roles = null;
 
+	/**
+	 * Get all WP available roles
+	 *
+	 * @return array $roles_array Array of roles
+	 */
 	public static function get_available_roles() {
 		if ( is_null( self::$roles ) ) {
 			$active_role     = Request_Utils::get_current_role_filter();
-			$role_links      = [];
+			$roles_array     = [];
 			$wp_roles        = wp_roles();
 			$url             = Table_Page::get_table_page_admin_url();
 			$users_count     = count_users();
 			$total_users     = $users_count['total_users'];
 			$available_roles = $users_count['avail_roles'];
 
-			$role_links[] = [
+			$roles_array[] = [
 				'slug'       => 'all',
 				'name'       => __( 'All', 'utec' ),
 				'count'      => number_format_i18n( $total_users ),
@@ -46,7 +51,7 @@ class Roles {
 					continue;
 				}
 
-				$role_links[] = [
+				$roles_array[] = [
 					'slug'       => $this_role,
 					'name'       => translate_user_role( $name ),
 					'count'      => number_format_i18n( $available_roles[$this_role] ),
@@ -56,7 +61,7 @@ class Roles {
 			}
 
 			if ( ! empty( $available_roles['none' ] ) ) {
-				$role_links[] = [
+				$roles_array[] = [
 					'slug'        => 'none',
 					'name'        => __( 'None', 'utec' ),
 					'count'       => number_format_i18n( $available_roles['none' ] ),
@@ -65,9 +70,32 @@ class Roles {
 				];
 			}
 
-			self::$roles = $role_links;
+			self::$roles = $roles_array;
 		}
 
 		return self::$roles;
+	}
+
+	/**
+	 * Get a readable version of $roles array
+	 *
+	 * @param array $roles Array of roles
+	 * @return array $role_list Array of strings
+	 */
+	public static function get_readable_user_roles( $roles ) {
+		$wp_roles  = wp_roles();
+		$role_list = [];
+
+		foreach ( $roles as $role ) {
+			if ( isset( $wp_roles->role_names[ $role ] ) ) {
+				$role_list[ $role ] = translate_user_role( $wp_roles->role_names[ $role ] );
+			}
+		}
+
+		if ( empty( $role_list ) ) {
+			$role_list['none'] = _x( 'None', 'no user roles' );
+		}
+
+		return $role_list;
 	}
 }
