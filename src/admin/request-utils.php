@@ -37,7 +37,7 @@ class Request_Utils {
 			'orderby' => 'user_login',
 			'order'   => 'ASC',
 			'role'    => null,
-			'number'  => 10,
+			'number'  => apply_filters( 'utec_users_amount', 10 ),
 			'paged'   => 1,
 		];
 
