@@ -6,6 +6,7 @@ use UTEC\Common\Interfaces\Has_Hooks;
 use UTEC\Admin\Request_Utils;
 use UTEC\Data\Users;
 use UTEC\Utils;
+use UTEC\Admin\Table_Page;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -45,6 +46,14 @@ class Get_Users implements Has_Hooks {
 	 * @return \WP_REST_Response Response data sent to React JS app.
 	 */
 	public function process_request( \WP_REST_Request $rest_request ) {
+		$capability = apply_filters( 'utec_admin_table_capability', Table_Page::CAPABILITY );
+
+		if ( ! current_user_can( $capability ) || ! wp_verify_nonce( $rest_request->get_header( 'X-WP-Nonce' ), 'wp_rest' ) ) {
+			return new \WP_REST_Response( [
+				'error' => new \WP_Error( 'unauthorized_access', __( 'You can\'t do that.', 'utec' ), [ 'status' => 403 ] )
+			] );
+		}
+
 		load_textdomain( 'default', WP_LANG_DIR . '/admin-' . get_locale() . '.mo' );
 
 		$original_request = $rest_request->get_param( 'request' );
