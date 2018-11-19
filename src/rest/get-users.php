@@ -45,6 +45,8 @@ class Get_Users implements Has_Hooks {
 	 * @return \WP_REST_Response Response data sent to React JS app.
 	 */
 	public function process_request( \WP_REST_Request $rest_request ) {
+		load_textdomain( 'default', WP_LANG_DIR . '/admin-' . get_locale() . '.mo' );
+
 		$original_request = $rest_request->get_param( 'request' );
 		$request          = Request_Utils::get_current_request( $original_request );
 		$users_class      = utec()->get_service( 'users' );
