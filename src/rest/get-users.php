@@ -49,9 +49,11 @@ class Get_Users implements Has_Hooks {
 		$capability = apply_filters( 'utec_admin_table_capability', Table_Page::CAPABILITY );
 
 		if ( ! current_user_can( $capability ) || ! wp_verify_nonce( $rest_request->get_header( 'X-WP-Nonce' ), 'wp_rest' ) ) {
-			return new \WP_REST_Response( [
-				'error' => new \WP_Error( 'unauthorized_access', __( 'You can\'t do that.', 'utec' ), [ 'status' => 403 ] )
-			] );
+			return new \WP_REST_Response(
+				[
+					'error' => new \WP_Error( 'unauthorized_access', __( 'You can\'t do that.', 'utec' ), [ 'status' => 403 ] )
+				]
+			);
 		}
 
 		load_textdomain( 'default', WP_LANG_DIR . '/admin-' . get_locale() . '.mo' );
