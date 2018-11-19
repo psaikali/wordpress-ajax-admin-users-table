@@ -2,9 +2,6 @@
 
 namespace UTEC;
 
-use UTEC\Admin\Options\Options;
-
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
