@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Everything related to roles data.
  */
 class Roles {
-	use Is_Singleton;
+	//use Is_Singleton;
 
 	/**
 	 * List of roles for our current request.
@@ -28,7 +28,7 @@ class Roles {
 	 *
 	 * @return array $roles_array Array of roles
 	 */
-	public static function get_available_roles() {
+	public function get_available_roles() {
 		if ( is_null( self::$roles ) ) {
 			$active_role     = Request_Utils::get_current_role_filter();
 			$roles_array     = [];
@@ -82,7 +82,7 @@ class Roles {
 	 * @param array $roles Array of roles
 	 * @return array $role_list Array of strings
 	 */
-	public static function get_readable_user_roles( $roles ) {
+	public function get_readable_user_roles( $roles ) {
 		$wp_roles  = wp_roles();
 		$role_list = [];
 

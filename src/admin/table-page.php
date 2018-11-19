@@ -57,12 +57,12 @@ class Table_Page implements Has_Hooks {
 		$users   = Request_Utils::get_current_request_users();
 
 		$data = [
-			'page_title'  => __( 'Custom Codeable.io users table', 'utec' ),
-			'admin_url'   => self::get_table_page_admin_url(),
-			'roles'       => Roles::get_available_roles(),
-			'request'     => $request,
-			'users'       => $users['users'],
-			'pagination'  => [
+			'page_title' => __( 'Custom Codeable.io users table', 'utec' ),
+			'admin_url'  => self::get_table_page_admin_url(),
+			'roles'      => utec()->get_service( 'roles' )->get_available_roles(),
+			'request'    => $request,
+			'users'      => $users['users'],
+			'pagination' => [
 				'current_page' => $request['paged'],
 				'total_pages'  => $users['total_pages'],
 				'total_users'  => $users['total_users'],

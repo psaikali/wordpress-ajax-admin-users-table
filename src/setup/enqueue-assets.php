@@ -52,7 +52,7 @@ class Enqueue_Assets implements Has_Hooks {
 					'nonce' => wp_create_nonce( 'wp_rest' ),
 				],
 				'admin_url'  => \UTEC\Admin\Table_Page::get_table_page_admin_url(),
-				'roles'      => \UTEC\Data\Roles::get_available_roles(),
+				'roles'      => utec()->get_service( 'roles' )->get_available_roles(),
 				'request'    => $request,
 				'users'      => $users['users'],
 				'pagination' => [

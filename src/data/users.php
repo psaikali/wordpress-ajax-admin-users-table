@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Everything related to users.
  */
 class Users {
-	use Is_Singleton;
+	//use Is_Singleton;
 
 	/**
 	 * List of users for our current request.
@@ -22,10 +22,16 @@ class Users {
 	 */
 	protected static $users = null;
 
+	/**
+	 * Getting our users!
+	 *
+	 * @param array $request_args The parameters to get users
+	 * @return array An array of prepared users (NOT WP_Users!).
+	 */
 	public function get_users( $request_args ) {
 		if ( is_null( self::$users ) ) {
 			$args = wp_parse_args(
-				$request_args, 
+				$request_args,
 				[
 					'orderby' => 'user_login',
 					'order'   => 'ASC',
@@ -47,7 +53,7 @@ class Users {
 				$total_pages = ceil( (int) $user_query->get_total() / (int) $args['number'] );
 
 				$users = [
-					'users'       => self::prepare_users_data( $user_query->get_results() ),
+					'users'       => $this->prepare_users_data( $user_query->get_results() ),
 					'total_pages' => (int) $total_pages,
 					'total_users' => $user_query->get_total(),
 				];
@@ -71,7 +77,7 @@ class Users {
 	 * @param array $users An array of WP_User objects
 	 * @return array $prepared_users An array of prepared objects
 	 */
-	protected static function prepare_users_data( $users ) {
+	protected function prepare_users_data( $users ) {
 		if ( ! is_array( $users ) ) {
 			return [];
 		}
@@ -100,7 +106,7 @@ class Users {
 				'name'       => $user_name,
 				'avatar'     => get_avatar_url( $user->ID, [ 'size' => 96 ] ),
 				'edit_link'  => get_edit_user_link( $user->ID ),
-				'roles'      => Roles::get_readable_user_roles( $user->roles ),
+				'roles'      => utec()->get_service( 'roles' )->get_readable_user_roles( $user->roles ),
 			];
 		}
 

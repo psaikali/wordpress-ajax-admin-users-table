@@ -68,7 +68,7 @@ class Request_Utils {
 	 * @return array Array of prepared users objects
 	 */
 	public static function get_current_request_users() {
-		$users_class = Users::get_instance();
+		$users_class = utec()->get_service( 'users' );
 		return $users_class->get_users( self::get_current_request() );
 	}
 }
