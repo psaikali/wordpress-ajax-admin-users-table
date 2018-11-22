@@ -25,4 +25,4 @@ function utec_change_number_users_per_page( $amount ) {
 	$per_page = (int) get_user_option( 'users_per_page' );
 	return ( empty( $per_page ) || $per_page < 1 ) ? $amount : $per_page;
 }
-add_action( 'utec_users_amount', 'utec_change_number_users_per_page' );
+add_action( 'utec_users_amount', 'utec_change_number_users_per_page', 1 );

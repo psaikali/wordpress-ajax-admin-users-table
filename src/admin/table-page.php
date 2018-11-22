@@ -37,7 +37,7 @@ class Table_Page implements Has_Hooks {
 	 * Add admin subpage
 	 */
 	public function add_admin_user_menu_subpage() {
-		add_submenu_page( 'users.php', __( 'Custom Codeable.io users table', 'utec' ), __( 'Custom table', 'utec' ), apply_filters( 'utec_admin_table_capability', self::CAPABILITY ), self::SLUG, [ $this, 'render_admin_page' ] );
+		add_submenu_page( 'users.php', __( 'AJAX Users Table', 'utec' ), __( 'AJAX table', 'utec' ), apply_filters( 'utec_admin_table_capability', self::CAPABILITY ), self::SLUG, [ $this, 'render_admin_page' ] );
 	}
 
 	/**
@@ -57,7 +57,7 @@ class Table_Page implements Has_Hooks {
 		$users   = Request_Utils::get_current_request_users();
 
 		$data = [
-			'page_title' => __( 'Custom Codeable.io users table', 'utec' ),
+			'page_title' => __( 'AJAX Users Table', 'utec' ),
 			'admin_url'  => self::get_table_page_admin_url(),
 			'roles'      => utec()->get_service( 'roles' )->get_available_roles(),
 			'request'    => $request,
