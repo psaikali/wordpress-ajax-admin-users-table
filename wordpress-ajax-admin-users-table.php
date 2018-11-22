@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name: User Table Exercise for Codeable
- * Description: Full-stack developer exercise for Codeable.io
+ * Plugin Name: WordPress AJAX Admin Users Table
+ * Description: A simple admin users table powered by React, loading data without page refresh.
  * Author: Pierre Saïkali
  * Author URI: https://saika.li
  * Text Domain: utec
